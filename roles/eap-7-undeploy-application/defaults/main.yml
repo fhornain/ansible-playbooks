@@ -1,0 +1,18 @@
+---
+# defaults file for eap-7-undeploy-application
+  master_node: true
+  os_family_supported: "RedHat"
+  os_min_supported_version: "8.1"
+
+  jboss_service: "eap7-standalone"
+  jboss_client: "/opt/rh/eap7/root/usr/share/wildfly/bin/jboss-cli.sh"
+  jboss_user: "admin"
+  jboss_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxx
+  jboss_application: "/home/fhornain/Documents/ansible-playbooks/application/helloworld/target/helloworld.war"        
+  jboss_application_name: "helloworld.war"        

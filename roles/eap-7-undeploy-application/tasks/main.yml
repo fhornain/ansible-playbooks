@@ -1,0 +1,17 @@
+---
+# tasks file for eap-7-undeploy-application
+  - name: Check for correct OS family & min version
+    assert:
+      that: "ansible_os_family == '{{ os_family_supported }}'"
+      that: "ansible_distribution_version >= '{{ os_min_supported_version }}'"
+    tags:
+     - oscheck
+
+  - name: Undeploy application
+    shell:
+      cmd: '{{jboss_client}} --user={{jboss_user}} --password={{jboss_password}} --connect --command="undeploy {{jboss_application_name}}"'
+    register: output
+
+  - name: Debug Deployment
+    debug: var=output
+
