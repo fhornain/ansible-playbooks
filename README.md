@@ -48,7 +48,7 @@ Download the ansible-playbooks project
 
 Encrypt the sudo password with Ansible Vault 
 ------------
-ansible-vault encrypt_string 'YOUR_SUDO_PASSWORD' --name 'ansible_sudo_pass
+ansible-vault encrypt_string 'YOUR_SUDO_PASSWORD' --name 'ansible_sudo_pass'
 
 This ansible command should then ask you a Vault password 
 New Vault password: 
