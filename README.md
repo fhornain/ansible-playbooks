@@ -65,7 +65,7 @@ ansible_sudo_pass: !vault |
           xxxx
 
 
-Copy the outcome of the previous step in the myplaybooks/group_vars/all/all.yml file and save it
+Copy the outcome of the previous step in the ansible-playbook/group_vars/all/all.yml file and save it
 ------------
 
 ---
@@ -83,6 +83,14 @@ For example :
 [server]
 10.10.10.10
 myserver.mydomain.com
+
+Compile the HelloWorld Java application
+------------
+[user@localhost ~]$ cd ansible-playbook/application/helloworld
+[user@localhost helloworld]$ mvn clean package
+
+Note : Do not forget to install maven if you want to compile the HelloWorld code.
+[root@localhost ~]# dnf install maven
 
 Execute the Ansible playbooks
 ------------
