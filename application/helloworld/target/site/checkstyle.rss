@@ -20,7 +20,7 @@ under the License.
 <rss version="0.91">
   <channel>
     <title>Quickstart: helloworld - Checkstyle report</title>
-    <link>http://www.jboss.org/jdf/quickstarts/get-started/helloworld/</link>
+    <link>http://www.jboss.org/helloworld</link>
     <description>Quickstart: helloworld - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2020 JBoss by Red Hat</copyright>
@@ -30,9 +30,9 @@ under the License.
              Warnings: 0,
              Infos: 0
       </title>
-            <link>http://www.jboss.org/jdf/quickstarts/get-started/helloworld//checkstyle.html</link>
+            <link>http://www.jboss.org/helloworld/checkstyle.html</link>
       <description>
-        <p>Click <a href="http://www.jboss.org/jdf/quickstarts/get-started/helloworld//checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="http://www.jboss.org/helloworld/checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://www.jboss.org/jdf/quickstarts/get-started/helloworld//checkstyle.html#org.jboss.as.quickstarts.helloworld.HelloService.java">org/jboss/as/quickstarts/helloworld/HelloService.java</a>
+                  <a href="http://www.jboss.org/helloworld/checkstyle.html#org.jboss.as.quickstarts.helloworld.HelloService.java">org/jboss/as/quickstarts/helloworld/HelloService.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://www.jboss.org/jdf/quickstarts/get-started/helloworld//checkstyle.html#org.jboss.as.quickstarts.helloworld.HelloWorldServlet.java">org/jboss/as/quickstarts/helloworld/HelloWorldServlet.java</a>
+                  <a href="http://www.jboss.org/helloworld/checkstyle.html#org.jboss.as.quickstarts.helloworld.HelloWorldServlet.java">org/jboss/as/quickstarts/helloworld/HelloWorldServlet.java</a>
                 </td>
                 <td>
                   0
