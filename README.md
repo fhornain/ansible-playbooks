@@ -67,6 +67,12 @@ ansible_sudo_pass: !vault |
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
           xxxx
 
+# Add your targeted client - IP or Hostname/FQDN - in the hosts file
+For example :
+[server]
+10.10.10.10
+myserver.mydomain.com
+
 # Execute the Ansible playbooks
 [user@localhost ~]$ ansible-playbook -i hosts --ask-vault-pass install-java-1.8.0-openjdk.yml
 
