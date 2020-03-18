@@ -1,0 +1,8 @@
+---
+# This playbook deploys two simple applications to JBoss server.
+
+- hosts: all
+
+  roles:
+# Optionally, (re)deploy java-1.8.0-openjdk here.
+    - java-1.8.0-openjdk
