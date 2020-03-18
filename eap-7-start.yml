@@ -1,0 +1,8 @@
+---
+# This playbook deploys two simple applications to JBoss server.
+
+- hosts: all
+
+  roles:
+# Start your JBoss EAP 7 Application Server.
+    - eap-7-start
