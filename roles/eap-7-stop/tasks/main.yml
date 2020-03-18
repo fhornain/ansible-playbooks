@@ -1,0 +1,14 @@
+---
+# tasks file for eap-7-stop
+  - name: Check for correct OS family & min version
+    assert:
+      that: "ansible_os_family == '{{ os_family_supported }}'"
+      that: "ansible_distribution_version >= '{{ os_min_supported_version }}'"
+    tags:
+     - oscheck
+
+  - name: Stop JBoss Systemd service
+    service: name="{{ jboss_service }}" state=stopped
+    ignore_errors: true
+    become: true
+    become_method: sudo

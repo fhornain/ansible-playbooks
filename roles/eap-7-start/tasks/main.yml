@@ -1,0 +1,13 @@
+---
+# tasks file for eap-7-start
+  - name: Check for correct OS family & min version
+    assert:
+      that: "ansible_os_family == '{{ os_family_supported }}'"
+      that: "ansible_distribution_version >= '{{ os_min_supported_version }}'"
+    tags:
+     - oscheck
+
+  - name: Start & enable JBoss Systemd service
+    service: name="{{ jboss_service }}" enabled=yes state=restarted
+    become: true
+    become_method: sudo

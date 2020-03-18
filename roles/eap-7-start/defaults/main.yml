@@ -1,0 +1,7 @@
+---
+# defaults file for eap-7-start
+  master_node: true
+  os_family_supported: "RedHat"
+  os_min_supported_version: "8.1"
+
+  jboss_service: "eap7-standalone"
