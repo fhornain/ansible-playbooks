@@ -8,6 +8,8 @@ Focus is currently on
   - eap-7-stop
   - eap-7-deploy-application
   - eap-7-undeploy-application
+  - eap-7-enable-datasource
+  - eap-7-disable-datasource
 
 
 # Preliminary tasks
@@ -106,6 +108,40 @@ For example :
 myserver.mydomain.com
 ```
 
+Encrypt the jboss admin password with Ansible Vault 
+------------
+```
+[user@localhost ~]$ ansible-vault encrypt_string 'YOUR_SUDO_PASSWORD' --name 'jboss_password'
+```
+
+This ansible command should then ask you a Vault password
+New Vault password:
+Confirm New Vault password:
+
+Then you should get the following output (here in anonymized format)
+```
+jboss_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxx
+```
+
+Copy the outcome of the previous step in the ansible-playbook/group_vars/all/all.yml file and save it
+------------
+```
+---
+jboss_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxx
+```
+
 Compile the HelloWorld Java application
 ------------
 ```
@@ -139,6 +175,8 @@ If you did not create any SSH public and private keys
 - eap-7-stop -> Stop Red Hat JBoss EAP 7
 - eap-7-deploy-application -> Deploy an HelloWorld application on JBoss EAP 7
 - eap-7-undeploy-application -> Undeploy an HelloWorld application on JBoss EAP 7
+- eap-7-enable-datasource -> enable the default ExampleDS datasource
+- eap-7-disable-datasource -> disable the default ExampleDS datasource
 
 # Tasks List
 - [x] Install Java 1.8.0
