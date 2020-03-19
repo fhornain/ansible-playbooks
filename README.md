@@ -69,7 +69,7 @@ ansible_sudo_pass: !vault |
 
 Copy the outcome of the previous step in the ansible-playbook/group_vars/all/all.yml file and save it
 ------------
-...   
+```
 
 ---
 ansible_sudo_pass: !vault |
@@ -79,7 +79,7 @@ ansible_sudo_pass: !vault |
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
           xxxx
-...
+```
 
 Add your targeted client - IP or Hostname/FQDN - in the hosts file
 ------------
