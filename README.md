@@ -35,11 +35,14 @@ Include user in the Wheel group - sudoer
 [roo@localhost ~]# usermod -aG wheel user
 ```
 
-Note : user is the username you are going to use to run your playbooks. 
+**Note**
+user is the username you are going to use to run your playbooks. 
 
 Install Ansible
 ------------
+```
 [roo@localhost ~]# dnf install ansible 
+```
 
 Create SSH Public and Private Keys
 ------------
@@ -110,8 +113,11 @@ Compile the HelloWorld Java application
 [user@localhost helloworld]$ mvn clean package
 ```
 
-Note : Do not forget to install maven if you want to compile the HelloWorld code.
+**Note**
+Do not forget to install maven if you want to compile the HelloWorld code.
+```
 [root@localhost ~]# dnf install maven
+```
 
 Execute the Ansible playbooks
 ------------
@@ -121,7 +127,8 @@ Execute the Ansible playbooks
 
 Command should ask you then you vault password
 
-Note : If you did not create any SSH public and private keys
+**Note**
+If you did not create any SSH public and private keys
 ```
 [user@localhost ~]$ ansible-playbook -i hosts -k --ask-vault-pass install-java-1.8.0-openjdk.yml
 ````
@@ -145,5 +152,7 @@ More information at [https://joinup.ec.europa.eu](https://joinup.ec.europa.eu/si
 
 Note 
 This liscence does not inculde the HelloWorld Java application which is under the Apache License, Version 2.0 (the "License")
+
 You may obtain a copy of the License at [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
 Orignial source code can be found at [https://github.com/jboss-developer/jboss-eap-quickstarts](https://github.com/jboss-developer/jboss-eap-quickstarts)
