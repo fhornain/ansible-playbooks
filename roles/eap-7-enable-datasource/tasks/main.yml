@@ -1,0 +1,17 @@
+---
+# tasks file for eap-7-enable-datasource
+  - name: Check for correct OS family & min version
+    assert:
+      that: "ansible_os_family == '{{ os_family_supported }}'"
+      that: "ansible_distribution_version >= '{{ os_min_supported_version }}'"
+    tags:
+     - oscheck
+
+  - name: Enable Datasource
+    shell:
+      cmd: '{{jboss_client}} --user={{jboss_user}} --password={{jboss_password}} --connect --command="data-source enable --name={{jboss_datasource_name}}"'
+    register: output
+
+  - name: Debug Deployment
+    debug: var=output
+
