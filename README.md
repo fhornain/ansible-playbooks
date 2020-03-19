@@ -69,6 +69,7 @@ ansible_sudo_pass: !vault |
 
 Copy the outcome of the previous step in the ansible-playbook/group_vars/all/all.yml file and save it
 ------------
+...   
 
 ---
 ansible_sudo_pass: !vault |
@@ -78,6 +79,7 @@ ansible_sudo_pass: !vault |
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
           xxxx
+...
 
 Add your targeted client - IP or Hostname/FQDN - in the hosts file
 ------------
@@ -104,11 +106,17 @@ Note : If you did not create any SSH public and private keys
 [user@localhost ~]$ ansible-playbook -i hosts -k --ask-vault-pass install-java-1.8.0-openjdk.yml
 
 # Details
-install-java-1.8.0-openjdk -> Install OpenJDK 1.8.0
-eap-7-start -> Start Red Hat JBoss EAP 7 
-eap-7-stop -> Stop Red Hat JBoss EAP 7
-eap-7-deploy-application -> Deploy an HelloWorld application on JBoss EAP 7
-eap-7-undeploy-application -> Undeploy an HelloWorld application on JBoss EAP 7
+- install-java-1.8.0-openjdk -> Install OpenJDK 1.8.0
+- eap-7-start -> Start Red Hat JBoss EAP 7 
+- eap-7-stop -> Stop Red Hat JBoss EAP 7
+- eap-7-deploy-application -> Deploy an HelloWorld application on JBoss EAP 7
+- eap-7-undeploy-application -> Undeploy an HelloWorld application on JBoss EAP 7
+
+# Tasks List
+- [x] Install Java 1.8.0
+- [x] Start and Stop Red Hat JBoss EAP 7
+- [x] Deploy and undeploy Java Application
+- [ ] Set and unset Datasource
 
 #License
 [EUPL-1.2](./LICENSE.md)
