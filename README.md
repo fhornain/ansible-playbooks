@@ -4,8 +4,10 @@ Focus is currently on
 - Java 1.8.0
   - install-java-1.8.0-openjdk
 - JBoss EAP 7
-  - eap7-start
-  - eap7-stop
+  - eap-7-start
+  - eap-7-stop
+  - eap-7-deploy-application
+  - eap-7-undeploy-application
 
 
 # Preliminary tasks
@@ -103,8 +105,10 @@ Note : If you did not create any SSH public and private keys
 
 # Details
 install-java-1.8.0-openjdk -> Install OpenJDK 1.8.0
-eap7-start -> Start Red Hat JBoss EAP 7 
-eap7-stop -> Stop Red Hat JBoss EAP 7
+eap-7-start -> Start Red Hat JBoss EAP 7 
+eap-7-stop -> Stop Red Hat JBoss EAP 7
+eap-7-deploy-application -> Deploy an HelloWorld application on JBoss EAP 7
+eap-7-undeploy-application -> Undeploy an HelloWorld application on JBoss EAP 7
 
 #License
 [EUPL-1.2](./LICENSE.md)
