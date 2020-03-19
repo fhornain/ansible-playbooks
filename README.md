@@ -15,7 +15,7 @@ Focus is currently on
 
 Install RHEL 8 
 ------------
-All RHEL 8 information can be found at [http://access.redhat.com]:(https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/)
+All RHEL 8 information can be found at [http://access.redhat.com](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/)
 
 Register your server to EPEL repository
 ------------
