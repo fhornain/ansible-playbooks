@@ -13,8 +13,18 @@ os_min_supported_version: "8.1"
 
 jboss_service: "eap7-standalone"
 jboss_client: "/opt/rh/eap7/root/usr/share/wildfly/bin/jboss-cli.sh"
-jboss_user: "admin"
-jboss_password: !vault |
+jboos_add_user: "/opt/rh/eap7/root/usr/share/wildfly/bin/add-user.sh"
+jboss_admin: "admin"
+jboss_admin_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxx
+          
+jboss_user: "test"
+jboss_user_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
