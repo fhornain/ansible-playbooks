@@ -7,7 +7,7 @@
     tags:
      - oscheck
 
-  - name: Start & enable JBoss Systemd service
+  - name: Create administration user in Jboss EAP 7
     shell:
       cmd: "'{{ jboss_add_user }}' -u '{{ jboss_user }}' -p '{{ jboss_user_password }}' -g 'admin'"
     become: true
