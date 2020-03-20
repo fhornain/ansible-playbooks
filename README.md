@@ -10,6 +10,8 @@ Focus is currently on
   - eap-7-undeploy-application
   - eap-7-enable-datasource
   - eap-7-disable-datasource
+  - eap-7-create-admin
+  - eap-7-delete-admin
 
 
 # Preliminary tasks
@@ -22,19 +24,40 @@ All RHEL 8 information can be found at [http://access.redhat.com](https://access
 Register your server to EPEL repository
 ------------
 ```
-[roo@localhost ~]# dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+[root@localhost ~]# dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 ```
 
 Install JBoss EAP 7 on your targeted system
 ------------
 ```
-[roo@localhost ~]# yum groupinstall jboss-eap7
+[root@localhost ~]# yum groupinstall jboss-eap7
 ```
+
+**Note**
+Here in this exercice, JBoss EAP 7 is in default mode - standalone.
+
+
+Set a Admin user in your JBoss EAP 7 configuration
+------------
+```
+[root@localhost ~]# /opt/rh/eap7/root/usr/share/wildfly/bin/add-user.sh
+```
+
+Change all IP 127.0.0.1 in 0.0.0.0
+------------
+```
+[root@localhost ~]# sed -i -e 's,127.0.0.1,0.0.0.0,g' /opt/rh/eap7/root/usr/share/wildfly/standalone/configuration/standalone.xml 
+```
+
+**Note**
+This command indicate the EAP 7 instance to listen to all interace.
+Thing not really recommended to do in production environment. 
+
 
 Include user in the Wheel group - sudoer
 ------------
 ```
-[roo@localhost ~]# usermod -aG wheel user
+[root@localhost ~]# usermod -aG wheel user
 ```
 
 **Note**
@@ -43,7 +66,7 @@ user is the username you are going to use to run your playbooks.
 Install Ansible
 ------------
 ```
-[roo@localhost ~]# dnf install ansible 
+[root@localhost ~]# dnf install ansible 
 ```
 
 Create SSH Public and Private Keys
@@ -111,7 +134,7 @@ myserver.mydomain.com
 Encrypt the jboss admin password with Ansible Vault 
 ------------
 ```
-[user@localhost ~]$ ansible-vault encrypt_string 'YOUR_SUDO_PASSWORD' --name 'jboss_password'
+[user@localhost ~]$ ansible-vault encrypt_string 'YOUR_SUDO_PASSWORD' --name 'jboss_admin_password'
 ```
 
 This ansible command should then ask you a Vault password
@@ -120,7 +143,7 @@ Confirm New Vault password:
 
 Then you should get the following output (here in anonymized format)
 ```
-jboss_password: !vault |
+jboss_admin_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -133,7 +156,7 @@ Copy the outcome of the previous step in the ansible-playbook/group_vars/all/all
 ------------
 ```
 ---
-jboss_password: !vault |
+jboss_admin_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -141,6 +164,43 @@ jboss_password: !vault |
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
           xxxx
 ```
+
+
+
+Encrypt the jboss test user (with admin rights) password with Ansible Vault
+------------
+```
+[user@localhost ~]$ ansible-vault encrypt_string 'YOUR_SUDO_PASSWORD' --name 'jboss_user_password'
+```
+
+This ansible command should then ask you a Vault password
+New Vault password:
+Confirm New Vault password:
+
+Then you should get the following output (here in anonymized format)
+```
+jboss_user_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxx
+```
+
+Copy the outcome of the previous step in the ansible-playbook/group_vars/all/all.yml file and save it
+------------
+```
+---
+jboss_user_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxx
+```
+
 
 Compile the HelloWorld Java application
 ------------
@@ -177,6 +237,8 @@ If you did not create any SSH public and private keys
 - eap-7-undeploy-application -> Undeploy an HelloWorld application on JBoss EAP 7
 - eap-7-enable-datasource -> enable the default ExampleDS datasource
 - eap-7-disable-datasource -> disable the default ExampleDS datasource
+- eap-7-create-admin -> Create an admin user in non RBAC environment
+- eap-7-delete-admin -> Delete an test user in non RBAC environment
 
 # Tasks List
 - [x] Install Java 1.8.0
