@@ -1,0 +1,8 @@
+---
+# This playbook deploys a simple applications to JBoss server.
+
+- hosts: all
+
+  roles:
+# Create Admin on JBoss EAP 7 Application Server.
+    - eap-7-create-admin
