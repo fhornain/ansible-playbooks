@@ -9,7 +9,7 @@
 
   - name: Undeploy application
     shell:
-      cmd: '{{jboss_client}} --user={{jboss_user}} --password={{jboss_password}} --connect --command="undeploy {{jboss_application_name}}"'
+      cmd: '{{jboss_client}} --user={{jboss_admin}} --password={{jboss_admin_password}} --connect --command="undeploy {{jboss_application_name}}"'
     register: output
 
   - name: Debug Deployment
