@@ -1,0 +1,31 @@
+---
+# tasks file for eap-7-start
+  - name: Check for correct OS family & min version
+    assert:
+      that: "ansible_os_family == '{{ os_family_supported }}'"
+      that: "ansible_distribution_version >= '{{ os_min_supported_version }}'"
+    tags:
+     - oscheck
+
+  - name: Delete administration user in Jboss EAP 7 
+    lineinfile: dest='{{jboss_mgmt_users}}'
+                state=absent 
+                regexp='^{{jboss_user}}.*$' 
+    become: true
+    become_method: sudo
+    register: output
+
+
+  - name: Delete administration group in Jboss EAP 7
+    lineinfile: dest='{{jboss_mgmt_groups}}'
+                state=absent
+                regexp='^{{jboss_user}}.*$'
+    become: true
+    become_method: sudo
+    register: output
+
+  - name: Debug Deployment
+    debug: var=output
+
+    become: true
+    become_method: sudo
