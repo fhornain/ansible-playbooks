@@ -9,7 +9,7 @@
 
   - name: Enable Datasource
     shell:
-      cmd: '{{jboss_client}} --user={{jboss_user}} --password={{jboss_password}} --connect --command="data-source enable --name={{jboss_datasource_name}}"'
+      cmd: '{{jboss_client}} --user={{jboss_admin}} --password={{jboss_admin_password}} --connect --command="data-source enable --name={{jboss_datasource_name}}"'
     register: output
 
   - name: Debug Deployment
