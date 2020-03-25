@@ -12,6 +12,7 @@ Focus is currently on
   - eap-7-disable-datasource
   - eap-7-create-admin
   - eap-7-delete-admin
+  - eap-7-product-info
 
 
 # Preliminary tasks
@@ -239,6 +240,7 @@ If you did not create any SSH public and private keys
 - eap-7-disable-datasource -> disable the default ExampleDS datasource
 - eap-7-create-admin -> Create an admin user in non RBAC environment
 - eap-7-delete-admin -> Delete an test user in non RBAC environment
+- eap-7-product-info -> Provide information on the JBoss EAP 7 Instance
 
 # Tasks List
 - [x] Install Java 1.8.0
