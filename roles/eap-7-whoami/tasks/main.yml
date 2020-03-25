@@ -1,0 +1,24 @@
+---
+# tasks file for eap-7-product-info
+  - name: Check for correct OS family
+    assert:
+      that: "ansible_os_family == '{{ os_family_supported }}'"
+    tags:
+     - oscheck
+
+  - name: Check for Ansible minimal version
+    assert:
+      that: "ansible_distribution_version >= '{{ os_min_supported_version }}'"
+    tags:
+     - ansiblecheck
+
+  - name: JBoss EAP7 who am I
+    shell:
+      cmd: '{{jboss_client}} --user={{jboss_admin}} --password={{jboss_admin_password}} --connect --command=":whoami"'
+    register: output
+
+  - name: Debug Deployment
+    debug: var=output
+
+    become: true
+    become_method: sudo
